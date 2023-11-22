@@ -10,8 +10,8 @@
 	<%@page import="java.util.*,ProjMyDetails.*"%>
 	<%
 	myDetailsDaw mdw = new myDetailsDaw();
-	String user = (String) session.getAttribute("user");
-	MyDetailsData userInfo = mdw.getAllInfo(user);
+	String users = (String) session.getAttribute("user");
+	MyDetailsData usersInfo = mdw.getAllInfo(users);
 	%>
 	<div class="dashboard">
 
