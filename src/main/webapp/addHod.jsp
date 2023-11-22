@@ -90,12 +90,12 @@
 			const div = document.getElementById('faculty-list')
 			for(var i=0; i<response.length;i++){
 				const a = document.createElement('a');
-				console.log(response[i])
+				//console.log(response[i])
 				a.classList.add('dropdown-item')
 				a.innerText = response[i];
 				a.setAttribute('href','#')
 				a.id=i
-				console.log(i)
+				//console.log(i)
 				a.addEventListener('click',	()=>setFaculty(a.id)	)
 				div.appendChild(a)
 			}

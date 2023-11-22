@@ -80,6 +80,14 @@ body {
 	<%
 	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	%>
+	<%@page
+		import="java.util.*,ProjMyDetails.*"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<% 
+		myDetailsDaw details = new myDetailsDaw();
+		String navUser = (String)session.getAttribute("user");
+		MyDetailsData navUserInfo = details.getAllInfo(navUser);
+	%>
 
 	<nav class="navbar navbar-expand-lg nav-back">
 
@@ -175,6 +183,9 @@ body {
 		style="background: #f3d250">
 		<h1 class="text-center" style="color: black">MARVEL</h1>
 	</div>
+	
+	
+	
 
 	<script>
         const name = `<%=session.getAttribute("user")%>
@@ -244,14 +255,21 @@ body {
 		}
 	</script>
 	
-	<script type="text/javascript">
-		const bell = document.getElementById("notification-bell");
-		const newNotification = document.getElementById("notification");
-		
-		bell.addEventListener('click', ()=>{
-			const display = newNotification.style.display=='block'?'none':'block';
-			newNotification.style.display=display
-		})
+	<script>
+		const navList = document.getElementsByClassName('navbar-nav')[0];
+		const role = `<%=navUserInfo.getDesignation()%>`;
+		//console.log('role is : '+role)
+		if(role==='HOD'){
+			const li = document.createElement('li');
+			const a =  document.createElement('a');
+			li.classList.add('nav-item');
+			a.classList.add('nav-link');
+			a.classList.add('menu-options');
+			li.appendChild(a);
+			a.setAttribute('href','addHod.jsp');
+			a.textContent = 'Add HOD'
+			navList.append(li);
+		}
 	</script>
 
 	<script
