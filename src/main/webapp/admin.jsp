@@ -16,6 +16,19 @@ pageEncoding="ISO-8859-1"%>
       body {
         font-family: "Inter", sans-serif;
       }
+      .new-notification{
+      	color:white;
+      	font-weight:bold;
+      	display:block;
+      	background:green;
+      	width:98%;
+      	margin:auto;
+      	border-radius:5px;
+      	padding:0.5rem;
+      }
+      .new-notification:hover{
+      	color:white;
+      }
     </style>
   </head>
 
@@ -52,9 +65,13 @@ pageEncoding="ISO-8859-1"%>
           min-height: 400px;
           background-color: #c1d5dd;
           border-radius: 8px;
+          padding:1rem;
         "
       >
         <h4 class="text-center py-3">Notifications</h4>
+        <a href="Hod_act.jsp" class="new-notification">
+        	New Signup request!
+        </a>
       </div>
     </div>
     <script>
