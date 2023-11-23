@@ -309,7 +309,7 @@
                                     <div class="error-pass">Must contain at least one number
                                         and one uppercase and one lowercase letter, and at least 8 or
                                         at most 16 characters and must not contain any special
-                                        character</div>
+                                        character.</div>
 
                                 </div>
 
