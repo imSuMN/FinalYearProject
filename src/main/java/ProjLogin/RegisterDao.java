@@ -9,7 +9,9 @@ public class RegisterDao {
 
 	private String dbUrl = "jdbc:mysql://localhost:3306/finalyearproject";
 	private String dbUname = "root";
-	private String dbPassword = "ALISHa2417@";
+
+	private String dbPassword = "Gaurav@123";
+
 	private String dbDriver = "com.mysql.cj.jdbc.Driver";
 
 	public void loadDriver(String dbDriver) {
