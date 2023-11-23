@@ -17,12 +17,14 @@
 	<%@page
 		import="java.util.*,ProjMyDetails.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 	<%@ include file="admin.jsp" %>
 	<%
 	myDetailsDaw indexMdw = new myDetailsDaw();
 	String indexUsers = (String) session.getAttribute("user");
 	MyDetailsData indexUsersInfo = mdw.getAllInfo(indexUsers);
 	%>
+
 	<!-- <p class="text-center">welcome to home page</p> -->
 <!-- 	  -->
   <script>

@@ -91,7 +91,9 @@ body {
 
 	<nav class="navbar navbar-expand-lg nav-back">
 
+
 		<img src="collegelogo.png" width="40" height="40" alt="">
+
 
 
 		<div class="collapse navbar-collapse container-fluid"
@@ -129,6 +131,7 @@ body {
 				          <a class="dropdown-item" href="#">Personal</a>
 				        </div>
 				      </li> -->
+
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle menu-options" href="#"
@@ -178,6 +181,7 @@ body {
 				</div>
 			</div>
 		</div>
+
 	</nav>
 	<div class="mx-2alert alert-light" role="alert"
 		style="background: #f3d250">
