@@ -344,7 +344,7 @@ form p a {
 		let signinBtn = document.getElementById("signinBtn");
 		let submitsignup = document.getElementById("submit-signup");
 		let submitsignin = document.getElementById("submit-signin");
-		const role = document.getElementById("role");
+		const roles = document.getElementById("role");
 		const department = document.getElementById("department");
 		const confirmPass = document.getElementById("confirm-pass");
 		signinBtn.onclick = function() {
@@ -352,7 +352,7 @@ form p a {
 			submitsignin.style.display = "block";
 			signupBtn.classList.remove("disable");
 			signinBtn.classList.add("disable");
-			role.style.display = 'none';
+			roles.style.display = 'none';
 			department.style.display = 'none';
 			confirmPass.style.display = 'none';
 
@@ -363,7 +363,7 @@ form p a {
 			submitsignin.style.display = "none";
 			signupBtn.classList.add("disable");
 			signinBtn.classList.remove("disable");
-			role.style.display = 'flex';
+			roles.style.display = 'flex';
 			department.style.display = 'flex';
 			confirmPass.style.display = 'flex';
 
@@ -383,6 +383,8 @@ form p a {
 
 		var n = "nothing";
 		var p = "nothing";
+		var role = '';
+		var dept = ''
 
 		let login = document.getElementById('submit-signin');
 		login.addEventListener('click', buttonClickHandler)
@@ -422,8 +424,35 @@ form p a {
 			// send the request
 			n = document.getElementById("inputEmail").value;
 			p = document.getElementById("inputPassword").value;
+			
 
 			params = "name=" + n + "&pwd=" + p;
+
+			xhr.send(params);
+		}
+		
+		submitsignup.addEventListener('click',registerRequestHandler)
+		function registerRequestHandler(){
+			console.log("request sent")
+			n = document.getElementById("inputEmail").value;
+			p = document.getElementById("inputPassword").value;
+			role = document.getElementById("inputRole").value;
+			dept = document.getElementById("inputDepartment").value;
+			//const data = new URLSearchParams();
+			//data.append('uname', n);
+			//data.append('pwd', p);
+			//data.append('role',role);
+			//data.append('dept',dept);
+			//fetch('RegisterTemp',{
+				//method:'POST',
+				//header:{"Content-type":"application/x-www-form-urlencoded"},
+				//body : data
+			//}).then(result=> console.log(result))
+			const xhr = new XMLHttpRequest();
+			xhr.open('POST', 'RegisterTemp', true);
+			xhr.setRequestHeader("Content-type",
+					"application/x-www-form-urlencoded");
+			params = "name=" + n + "&pwd=" + p+"&role="+role+"&dept="+dept;
 
 			xhr.send(params);
 		}

@@ -51,5 +51,28 @@ public class RegisterDao {
 		}
 		return result;
 	}
+	
+	
+	public String insertTemp(TempMember myuser) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sql = "insert into myusertemp values(?,?,?,?)";
+
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, myuser.getUname());
+			ps.setString(2, myuser.getPassword());
+			ps.setString(3, myuser.getRole());
+			ps.setString(4, myuser.getDepartment());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+		}
+		return result;
+	}
 
 }
