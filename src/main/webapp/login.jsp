@@ -21,15 +21,8 @@
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	/* Cover the entire viewport height */
 }
 
-/*.welc{
-    	padding-left: 15px;
-    	padding-top: -5px;
-    	font-size: 2rem;
-    	
-    }*/
 .marvel {
 	padding-top: 90px;
 	font-size: 4rem;
@@ -44,28 +37,6 @@
 	color: #5da2d5;
 }
 
-/*.right {
-        display: flex;
-    	background-color: #5da2d5;
-    	flex-direction: column;
-    	justify-content: center;
-    	align-items: center;
-    	height: 100vh;
-    	/* Cover the entire viewport height */
-
-/*.error-text {
-        margin: 0px 0px 15px 100px;
-        background: #fffff;
-        color: #fceae8;
-        font-size: 15px;
-        padding: 8px;
-        border-radius: 5px;
-        width: 200px;
-        text-align: center;
-        display: none;
-        max-width: 300px; /* Set a maximum width for the error message */
-/*word-wrap: break-word;  Allow words to be wrapped if they don't fit 
-    }*/
 .error-pass {
 	margin: -10px 0px 15px 105px;
 	background: #e74c3c;
@@ -80,12 +51,6 @@
 	/* Set a maximum width for the error message */
 	word-wrap: break-word;
 } /* Allow words to be wrapped if they don't fit */
-
-/*.icon{
-    	width: 15px;
-    	height: 15px;
-   
-    }*/
 #form-box {
 	width: 90%;
 	background: #fff;
@@ -176,7 +141,6 @@ form p a {
 	transition: background 1s;
 }
 
-
 .btn-field button.disable {
 	background: #eaeaea;
 	color: #555;
@@ -191,8 +155,7 @@ form p a {
 
 				<div class="header">
 					<p class="align-top">
-						<img src="./collegelogo.png"
-							style="width: 45px; height: 45px;">
+						<img src="./collegelogo.png" style="width: 45px; height: 45px;">
 					</p>
 
 					<h1 class="marvel align-left p-3">MARVEL</h1>
@@ -240,38 +203,11 @@ form p a {
                                 letter,
                                 and at least 8 or at most 16 characters and must not contain any special character</div-->
 			<!-- <div class="error-text">please enter valid Email Address</div> -->
-			<!--   <div class="account" id="result" style="width: 100%; display: none; text-align: center; padding: 10px;">
-
-                                <!--svg xmlns="http://www.w3.org/2000/svg">
-                                    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                                    </symbol>
-                                </svg-->
-			<!-- <div class="alert alert-primary d-flex align-items-center" role="alert"
-                                    style="padding: 5px 10px; margin: 10px 0;">
-                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                                        aria-label="Info:">
-                                        <use xlink:href="#info-fill" />
-                                    </svg>
-                                    <div>
-                                        You have no Account.... Do you want to create....
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end"
-                                            style="height: 36px;width: 74px;margin-left: 120px;">
-                                            <table>
-                                                <tr>
-                                                    <td><input type=button id=yes value=YES></td>
-                                                    <td><input type=button id=no value=NO></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 
 
-                            <div class="d-flex  col-4 justify-content-start" style="margin-top: 60px;">
+
+			<!--      <div class="d-flex  col-4 justify-content-start" style="margin-top: 60px;">
                                 <button class="btn btn-primary" type="button" id="login"
                                     value="login"><b>Signup/Login</b></button>
                                     
@@ -287,8 +223,28 @@ form p a {
 				<div class="form-box" id="form-box">
 					<!-- 	<h1 id="title">Sign Up</h1> -->
 					<div class="btn-field">
-						<button type="button" id="signupBtn" class="disable">Register</button>
 						<button type="button" id="signinBtn">Login</button>
+						<button type="button" id="signupBtn" class="disable">Register</button>
+
+					</div>
+					<div class="account" id="result"
+						style="width: 100%; display: none; text-align: center; padding: 10px;">
+
+						<svg xmlns="http://www.w3.org/2000/svg">
+                                    <symbol id="info-fill"
+								fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+								d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                    </symbol>
+                                </svg>
+						<div class="alert alert-primary d-flex align-items-center"
+							role="alert" style="padding: 5px 10px; margin: 10px 0;">
+							<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+								role="img" aria-label="Info:">
+                                        <use xlink:href="#info-fill" />
+                                    </svg>
+							<div>You have no Account.... Please Register....</div>
+						</div>
 
 					</div>
 					<form>
@@ -299,16 +255,15 @@ form p a {
 									required>
 							</div>
 							<div class="input-field" id='role'>
-								<i class="fa-solid fa-envelope"></i> <input
-									type="text" name="txtName" placeholder="Role" id="inputRole"
-									required>
+								<i class="fa-solid fa-envelope"></i> <input type="text"
+									name="txtName" placeholder="Role" id="inputRole" required>
 							</div>
 							<div class="input-field" id='department'>
-								<i class="fa-solid fa-envelope"></i> <input
-									type="text" name="txtName" placeholder="Department" id="inputDepartment"
+								<i class="fa-solid fa-envelope"></i> <input type="text"
+									name="txtName" placeholder="Department" id="inputDepartment"
 									required>
 							</div>
-							<div class="input-field" >
+							<div class="input-field">
 								<i class="fa-solid fa-lock"></i> <input onkeyup="check1()"
 									type="password" name="txtPwd" id="inputPassword" maxlength="16"
 									placeholder="Password" required> <br>
@@ -318,19 +273,21 @@ form p a {
 									character</div>
 
 							</div>
-							
+
 							<div class="input-field" id='confirm-pass'>
 								<i class="fa-solid fa-lock"></i> <input onkeyup="check1()"
-									type="password" name="txtPwd" id="inputConfirmPassword" maxlength="16"
-									placeholder="Confirm Password" required>
+									type="password" name="txtPwd" id="inputConfirmPassword"
+									maxlength="16" placeholder="Confirm Password" required>
 							</div>
 
 						</div>
 						<div class="">
 							<button type="button" id="submit-signup"
-								style="width: 100%; margin: auto;" class="btn btn-info">Send Request</button>
+								style="width: 100%; margin: auto;" class="btn btn-info">Send
+								Request</button>
 							<button type="button" id="submit-signin"
-								style="width: 100%; display: none; margin: auto;" class="btn btn-info">Login</button>
+								style="width: 100%; display: none; margin: auto;"
+								class="btn btn-info">Login</button>
 
 						</div>
 
@@ -424,35 +381,25 @@ form p a {
 			// send the request
 			n = document.getElementById("inputEmail").value;
 			p = document.getElementById("inputPassword").value;
-			
 
 			params = "name=" + n + "&pwd=" + p;
 
 			xhr.send(params);
 		}
-		
-		submitsignup.addEventListener('click',registerRequestHandler)
-		function registerRequestHandler(){
+
+		submitsignup.addEventListener('click', registerRequestHandler)
+		function registerRequestHandler() {
 			console.log("request sent")
 			n = document.getElementById("inputEmail").value;
 			p = document.getElementById("inputPassword").value;
 			role = document.getElementById("inputRole").value;
 			dept = document.getElementById("inputDepartment").value;
-			//const data = new URLSearchParams();
-			//data.append('uname', n);
-			//data.append('pwd', p);
-			//data.append('role',role);
-			//data.append('dept',dept);
-			//fetch('RegisterTemp',{
-				//method:'POST',
-				//header:{"Content-type":"application/x-www-form-urlencoded"},
-				//body : data
-			//}).then(result=> console.log(result))
 			const xhr = new XMLHttpRequest();
 			xhr.open('POST', 'RegisterTemp', true);
 			xhr.setRequestHeader("Content-type",
 					"application/x-www-form-urlencoded");
-			params = "name=" + n + "&pwd=" + p+"&role="+role+"&dept="+dept;
+			params = "name=" + n + "&pwd=" + p + "&role=" + role + "&dept="
+					+ dept;
 
 			xhr.send(params);
 		}
