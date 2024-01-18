@@ -48,6 +48,7 @@ public class RegisterTemp extends HttpServlet {
 
 		String uname = request.getParameter("name");
 		String password = request.getParameter("pwd");
+		password = doHashing(password);
 		String role=request.getParameter("role");
 		String department=request.getParameter("dept");
 		//password = doHashing(password);
@@ -57,6 +58,7 @@ public class RegisterTemp extends HttpServlet {
 
 		RegisterDao rDao = new RegisterDao();
 		String result = rDao.insertTemp(myuser);
+		
 		if (result == "Data entered successfully") {
 			out.print("1");
 		}

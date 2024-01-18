@@ -1,12 +1,17 @@
 package ProjMyDetails;
 
 import java.io.InputStream;
+import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
+
+import ProjLogin.TempMember;
 
 public class myDetailsDaw {
 
@@ -171,6 +176,39 @@ public class myDetailsDaw {
 			e.printStackTrace();
 		}
 		return status;
+	}
+	
+	
+	
+	public String getTempUsers() {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sql = "select * from myusertemp";
+		ArrayList<String> temp = new ArrayList<String>();
+		PreparedStatement ps;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnsNumber = metaData.getColumnCount();
+			
+			while (rs.next()) {
+				String tempMember = rs.getString(1)+' '+ rs.getString(2)+' '+ rs.getString(3)+' '+
+						rs.getString(4);
+				temp.add(tempMember);
+			}
+			Gson gson = new Gson();
+			return gson.toJson(rs);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+			return result;
+		}
+		
 	}
 
 }

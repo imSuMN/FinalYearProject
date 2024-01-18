@@ -36,6 +36,11 @@ pageEncoding="ISO-8859-1"%>
     <%@page import="java.util.*,ProjMyDetails.*"%> <% myDetailsDaw mdw = new
     myDetailsDaw(); String user = (String) session.getAttribute("user");
     MyDetailsData userInfo = mdw.getAllInfo(user); %>
+    <%
+	myDetailsDaw rg = new myDetailsDaw();
+	ArrayList<String> arr = rg.getTempUsers();
+	//System.out.println(arr.get(0));
+	%>
     <div style="height: 80vh; display: flex; justify-content: space-evenly">
       <div
         class="dashboard"
@@ -68,10 +73,8 @@ pageEncoding="ISO-8859-1"%>
           padding:1rem;
         "
       >
-        <h4 class="text-center py-3">Notifications</h4>
-        <a href="Hod_act.jsp" class="new-notification">
-        	New Signup request!
-        </a>
+        <h4 class="text-center py-3" id='notification'>Notifications</h4>
+        
       </div>
     </div>
     <script>
@@ -79,6 +82,20 @@ pageEncoding="ISO-8859-1"%>
         console.log("clicked");
         window.location = "addHod.jsp";
       };
+      var len =`<%=arr%>`
+  		var size = len.length-1
+  		if(size<10){
+  			console.log("empty")
+  		}else{
+  			const notification = document.getElementById('notification-panel');
+  			const a = document.createElement('a');
+  			a.innerHTML = `<a href="Hod_act.jsp" class="new-notification">
+  	        	New Signup request!
+  		        </a>`
+  		    notification.appendChild(a);
+  		}
+      
+      
     </script>
   </body>
 </html>

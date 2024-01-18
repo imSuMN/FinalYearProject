@@ -95,7 +95,6 @@
 	align-items: center;
 	max-height: 65px;
 	transition: max-height 0.5s;
-	overflow: hidden;
 	width: 100%;
 }
 
@@ -223,27 +222,28 @@ form p a {
 				<div class="form-box" id="form-box">
 					<!-- 	<h1 id="title">Sign Up</h1> -->
 					<div class="btn-field">
-						<button type="button" id="signinBtn">Login</button>
-						<button type="button" id="signupBtn" class="disable">Register</button>
+						<button type="button" id="signinBtn" class="disable">Login</button>
+						<button type="button" id="signupBtn">Register</button>
 
 					</div>
 					<div class="account" id="result"
 						style="width: 100%; display: none; text-align: center; padding: 10px;">
 
-						<svg xmlns="http://www.w3.org/2000/svg">
-                                    <symbol id="info-fill"
-								fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-								d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                                    </symbol>
-                                </svg>
 						<div class="alert alert-primary d-flex align-items-center"
 							role="alert" style="padding: 5px 10px; margin: 10px 0;">
-							<svg class="bi flex-shrink-0 me-2" width="24" height="24"
-								role="img" aria-label="Info:">
+							<svg xmlns="http://www.w3.org/2000/svg"
+								class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+								aria-label="Info:">
+								<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                        <path
+									d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                    </symbol>
                                         <use xlink:href="#info-fill" />
                                     </svg>
-							<div>You have no Account.... Please Register....</div>
+							<div>
+								<span class="mx-2">You have no Account.... Please
+									Register....</span>
+							</div>
 						</div>
 
 					</div>
@@ -254,14 +254,54 @@ form p a {
 									type="text" name="txtName" placeholder="Email" id="inputEmail"
 									required>
 							</div>
-							<div class="input-field" id='role'>
-								<i class="fa-solid fa-envelope"></i> <input type="text"
-									name="txtName" placeholder="Role" id="inputRole" required>
+							
+							
+							<div class="w-100 input-field" id="role">
+							<input	id="inputRole" name="department" class="d-none" type="text" />
+								<!-- Example split danger button -->
+								<div class="btn-group w-100">
+									<button id='Role' type="button"
+										class="btn ">Select Role</button>
+									<button type="button"
+										class="btn dropdown-toggle dropdown-toggle-split"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right w-100 my-3" x-placement="bottom">
+										<a onClick="setRole('Faculty')"
+											class="dropdown-item" href="#">Faculty</a> <a
+											onClick="setRole('Student')"
+											class="dropdown-item" href="#">Student</a>
+									</div>
+								</div>
 							</div>
-							<div class="input-field" id='department'>
-								<i class="fa-solid fa-envelope"></i> <input type="text"
-									name="txtName" placeholder="Department" id="inputDepartment"
-									required>
+							
+							
+							
+
+							<div class="w-100 input-field" id="dept">
+							<input	id="inputDepartment" name="department" class="d-none" type="text" />
+								<!-- Example split danger button -->
+								<div class="btn-group w-100">
+									<button id='department' type="button"
+										class="btn ">Select Department</button>
+									<button type="button"
+										class="btn dropdown-toggle dropdown-toggle-split"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right w-100 my-3" x-placement="bottom">
+										<a onClick="setDepartment('Information Technology')"
+											class="dropdown-item" href="#">Information Technology</a> <a
+											onClick="setDepartment('Computer Science and Engineering')"
+											class="dropdown-item" href="#">Computer Science and
+											Engineering</a> <a
+											onClick="setDepartment('Electrical Engineering')"
+											class="dropdown-item" href="#">Electrical Engineering</a>
+									</div>
+								</div>
 							</div>
 							<div class="input-field">
 								<i class="fa-solid fa-lock"></i> <input onkeyup="check1()"
@@ -297,33 +337,50 @@ form p a {
 		</div>
 	</div>
 	<script>
+	//const dept = document.getElementById('department')
 		let signupBtn = document.getElementById("signupBtn");
 		let signinBtn = document.getElementById("signinBtn");
 		let submitsignup = document.getElementById("submit-signup");
 		let submitsignin = document.getElementById("submit-signin");
 		const roles = document.getElementById("role");
-		const department = document.getElementById("department");
+		const department = document.getElementById("inputDepartment");
 		const confirmPass = document.getElementById("confirm-pass");
 		signinBtn.onclick = function() {
 			submitsignup.style.display = "none";
 			submitsignin.style.display = "block";
-			signupBtn.classList.remove("disable");
-			signinBtn.classList.add("disable");
+			signupBtn.classList.add("disable");
+			signinBtn.classList.remove("disable");
 			roles.style.display = 'none';
-			department.style.display = 'none';
+			document.getElementById('dept').style.display = 'none';
 			confirmPass.style.display = 'none';
 
 		}
-		signupBtn.onclick = function() {
-
+		
+		const handleSignupClick = ()=>{
+			console.log('signup')
 			submitsignup.style.display = "block";
 			submitsignin.style.display = "none";
-			signupBtn.classList.add("disable");
-			signinBtn.classList.remove("disable");
+			signupBtn.classList.remove("disable");
+			signinBtn.classList.add("disable");
 			roles.style.display = 'flex';
-			department.style.display = 'flex';
+			document.getElementById('dept').style.display = 'flex';
 			confirmPass.style.display = 'flex';
 
+		}
+		signupBtn.addEventListener('click',handleSignupClick)
+		
+		const setDepartment = (deprt)=>{
+			//console.log(dept)
+			departmentBtn = document.getElementById('department')
+			departmentBtn.textContent = deprt;
+			department.value = deprt;
+		}
+		
+		const setRole = (deprt)=>{
+			//console.log(dept)
+			departmentBtn = document.getElementById('Role')
+			departmentBtn.textContent = deprt;
+			document.getElementById('inputRole').value = deprt;
 		}
 	</script>
 
@@ -367,6 +424,7 @@ form p a {
 					} else if (this.responseText === "-1") {
 						console.log("does not exist");
 						document.getElementById('result').style.display = 'block';
+						handleSignupClick()
 						document.getElementById('login').style.display = 'none';
 					} else {
 						console.log("failed")
@@ -442,24 +500,24 @@ form p a {
 
 	<script>
 		const email = document.querySelector("#inputEmail");
-		const error = document.querySelector(".error-text");
+		//const error = document.querySelector(".error-text");
 		const btn = document.querySelector("button");
 		let regExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 		function check() {
 			if (email.value.match(regExp)) {
 				email.style.borderColor = "#27ae60";
-				error.style.display = "none";
-				btn.style.display = "block";
+				//error.style.display = "none";
+				//btn.style.display = "block";
 			} else {
 				email.style.borderColor = "#e74c3c";
-				error.style.display = "block";
-				btn.style.display = "none";
+				//error.style.display = "block";
+				//btn.style.display = "none";
 
 			}
 			if (email.value == "") {
 				email.style.borderColor = "rgb(32, 18, 93)";
-				error.style.display = "none";
-				btn.style.display = "block";
+				//error.style.display = "none";
+				//btn.style.display = "block";
 			}
 		}
 
