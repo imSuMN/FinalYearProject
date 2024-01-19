@@ -1,9 +1,11 @@
 package ProjLogin;
-
+import java.util.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 public class RegisterDao {
 
@@ -50,6 +52,99 @@ public class RegisterDao {
 			result = "Data not entered";
 		}
 		return result;
+	}
+	
+	
+	public String insertTemp(TempMember myuser) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sql = "insert into myusertemp values(?,?,?,?)";
+
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, myuser.getUname());
+			ps.setString(2, myuser.getPassword());
+			ps.setString(3, myuser.getRole());
+			ps.setString(4, myuser.getDepartment());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+		}
+		return result;
+	}
+	
+	public void removeTemp(String myuser) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sql = "delete from myusertemp where uname=?";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, myuser);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+		}
+	}
+	
+	
+	public void addPerm(String myuser) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sq = "select * from myusertemp where uname=?";
+		String sql = "delete from myusertemp where uname=?";
+		PreparedStatement ps;
+		PreparedStatement ps1;
+		try {
+			ps1 = con.prepareStatement(sq);
+			ps = con.prepareStatement(sql);
+			ps.setString(1, myuser);
+			ps1.setString(1, myuser);
+			ResultSet rss = ps1.executeQuery();
+			rss.next();
+			System.out.println(rss.getString(1));
+			Member myusr = new Member(rss.getString(1),rss.getString(2));
+			insert(myusr);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+		}
+	}
+	
+	
+	public ArrayList<TempMember> getTempUsers() {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String result = "Data entered successfully";
+		String sql = "select * from myusertemp";
+		ArrayList<TempMember> temp = new ArrayList<TempMember>();
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnsNumber = metaData.getColumnCount();
+			while(rs.next()) {
+				TempMember tempMember = new TempMember(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+				temp.add(tempMember);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = "Data not entered";
+		}
+		return temp ;
 	}
 
 }
