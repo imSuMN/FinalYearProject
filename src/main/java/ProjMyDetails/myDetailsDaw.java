@@ -180,7 +180,7 @@ public class myDetailsDaw {
 	
 	
 	
-	public String getTempUsers() {
+	public ArrayList<String> getTempUsers() {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
 		String result = "Data entered successfully";
@@ -195,19 +195,45 @@ public class myDetailsDaw {
 			int columnsNumber = metaData.getColumnCount();
 			
 			while (rs.next()) {
-				String tempMember = rs.getString(1)+' '+ rs.getString(2)+' '+ rs.getString(3)+' '+
+				String tempMember = rs.getString(1)+';'+ rs.getString(2)+';'+ rs.getString(3)+';'+
 						rs.getString(4);
 				temp.add(tempMember);
 			}
-			Gson gson = new Gson();
-			return gson.toJson(rs);
+
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			result = "Data not entered";
-			return result;
+			result = "";
 		}
+		return temp;
+		
+	}
+	
+	
+	public ArrayList<String> getRoles() {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		String sql = "select * from roles";
+		ArrayList<String> temp = new ArrayList<String>();
+		PreparedStatement ps;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnsNumber = metaData.getColumnCount();
+			
+			while (rs.next()) {
+				String tempMember = rs.getString(1)+';'+ rs.getString(2);
+				temp.add(tempMember);
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return temp;
 		
 	}
 

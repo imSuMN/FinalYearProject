@@ -60,7 +60,8 @@
 	<%@ include file="nav.jsp"%>
 	<%
 	myDetailsDaw rg = new myDetailsDaw();
-	String arr = rg.getTempUsers();
+	ArrayList<String> arr = rg.getTempUsers();
+	ArrayList<String> arr1 = rg.getRoles();
 	//System.out.println(arr.get(0));
 	%>
 
@@ -113,21 +114,24 @@
 		xhr.send(params);
 	}
 		const div = document.getElementById('out')
-		var userData = `<%=arr%>`
-		var parseData = JSON.parse(userData)
-		console.log(parseData);
-		//console.log(len)
-		//var size = len.length-1
-		//if(size<10){
-			//console.log("empty")
-		//}else{
-			
-		//len=len.substring(1,size)
-		//len=len.split(',');
+		var len = `<%=arr%>`
+		var roleList = `<%=arr1%>`
 		
-		/*parseData.forEach(det=>{
+		console.log(len)
+		var size = len.length-1
+		var roleSize = roleList.length-1
+		if(size<10){
+			console.log("empty")
+		}else{
+			
+		len=len.substring(1,size)
+		len=len.split(',');
+		roleList=roleList.substring(1,roleSize)
+		roleList=roleList.split(',');
+		
+		len.forEach(det=>{
 			console.log(det)
-			var details = det.trim().split(" ");
+			var details = det.trim().split(';');
 			const newDiv = document.createElement('div')
 			newDiv.classList.add('last_div')
 			//console.log(details[0]+" "+details[1]+" "+details[2]+" "+details[3] )
@@ -150,7 +154,7 @@
 			p3.classList.add('listItem')
 			
 			p1.innerText = details[0]
-			p2.innerText = details[2]
+			p2.innerText = roleList[details[2]].split(';')[1]
 			p3.innerText = details[3]
 			
 			newDiv.appendChild(p1)
@@ -161,7 +165,7 @@
 			
 			div.appendChild(newDiv);
 		})
-		}*/
+		}
 		
 		
 	
