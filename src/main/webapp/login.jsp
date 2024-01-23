@@ -147,6 +147,12 @@ form p a {
 </style>
 
 <body>
+	<%@page import="java.util.*,ProjMyDetails.*"%>
+	<%
+	myDetailsDaw rg = new myDetailsDaw();
+	ArrayList<String> arr = rg.getRoles();
+	//System.out.println(arr.get(0));
+	%>
 	<div class="container-fluid">
 		<div class="row">
 			<!-- Left Container -->
@@ -254,45 +260,44 @@ form p a {
 									type="text" name="txtName" placeholder="Email" id="inputEmail"
 									required>
 							</div>
-							
-							
+
+
 							<div class="w-100 input-field" id="role">
-							<input	id="inputRole" name="department" class="d-none" type="text" />
+								<input id="inputRole" name="department" class="d-none"
+									type="text" />
 								<!-- Example split danger button -->
 								<div class="btn-group w-100">
-									<button id='Role' type="button"
-										class="btn ">Select Role</button>
+									<button id='Role' type="button" class="btn ">Select
+										Role</button>
 									<button type="button"
 										class="btn dropdown-toggle dropdown-toggle-split"
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">
 										<span class="sr-only">Toggle Dropdown</span>
 									</button>
-									<div class="dropdown-menu dropdown-menu-right w-100 my-3" x-placement="bottom">
-										<a onClick="setRole('Faculty')"
-											class="dropdown-item" href="#">Faculty</a> <a
-											onClick="setRole('Student')"
-											class="dropdown-item" href="#">Student</a>
-									</div>
+									<div class="dropdown-menu dropdown-menu-right w-100 my-3"
+										x-placement="bottom" id='roles-list'></div>
 								</div>
 							</div>
-							
-							
-							
+
+
+
 
 							<div class="w-100 input-field" id="dept">
-							<input	id="inputDepartment" name="department" class="d-none" type="text" />
+								<input id="inputDepartment" name="department" class="d-none"
+									type="text" />
 								<!-- Example split danger button -->
 								<div class="btn-group w-100">
-									<button id='department' type="button"
-										class="btn ">Select Department</button>
+									<button id='department' type="button" class="btn ">Select
+										Department</button>
 									<button type="button"
 										class="btn dropdown-toggle dropdown-toggle-split"
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">
 										<span class="sr-only">Toggle Dropdown</span>
 									</button>
-									<div class="dropdown-menu dropdown-menu-right w-100 my-3" x-placement="bottom">
+									<div class="dropdown-menu dropdown-menu-right w-100 my-3"
+										x-placement="bottom">
 										<a onClick="setDepartment('Information Technology')"
 											class="dropdown-item" href="#">Information Technology</a> <a
 											onClick="setDepartment('Computer Science and Engineering')"
@@ -371,16 +376,19 @@ form p a {
 		
 		const setDepartment = (deprt)=>{
 			//console.log(dept)
-			departmentBtn = document.getElementById('department')
+			const departmentBtn = document.getElementById('department')
 			departmentBtn.textContent = deprt;
 			department.value = deprt;
 		}
 		
-		const setRole = (deprt)=>{
+		const setRole = (deprtId, deprtName)=>{
 			//console.log(dept)
-			departmentBtn = document.getElementById('Role')
-			departmentBtn.textContent = deprt;
-			document.getElementById('inputRole').value = deprt;
+			console.log(deprtName)
+			const departmentBtn = document.getElementById('Role')
+			//var details = det.trim().split(';');
+			departmentBtn.textContent = deprtName;
+			document.getElementById('inputRole').value = deprtId;
+			
 		}
 	</script>
 
@@ -541,6 +549,31 @@ form p a {
 				//btn.style.display="block";
 			}
 		}
+		
+		function populateRoles(){
+			var len = `<%=arr%>`
+				
+				console.log(len)
+				var size = len.length-1
+				if(size<10){
+					console.log("empty")
+				}else{
+					
+					len=len.substring(1,size)
+					len=len.split(',');
+					len.forEach(det=>{
+						const rolesList = document.getElementById('roles-list');
+						var details = det.trim().split(';');
+						console.log(details[0]+' '+details[1])
+						const rolesAnchor = document.createElement('a');
+						rolesAnchor.innerHTML = `<a class='dropdown-item' id='`+ details[0] +`' href='#'>`+details[1]+`</a>`
+						rolesAnchor.addEventListener('click',()=>setRole(details[0],details[1]))
+						rolesList.append(rolesAnchor)
+					})
+				}
+		}
+			
+			populateRoles()
 	</script>
 
 	<script
