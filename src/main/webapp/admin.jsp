@@ -33,13 +33,15 @@ pageEncoding="ISO-8859-1"%>
   </head>
 
   <body>
-    <%@page import="java.util.*,ProjMyDetails.*"%> <% myDetailsDaw mdw = new
-    myDetailsDaw(); String user = (String) session.getAttribute("user");
+    <%@page import="java.util.*,ProjMyDetails.*"%> 
+    <% myDetailsDaw mdw = new myDetailsDaw();
+    String user = (String) session.getAttribute("user");
     MyDetailsData userInfo = mdw.getAllInfo(user); %>
     <%
 	myDetailsDaw rg = new myDetailsDaw();
 	ArrayList<String> arr = rg.getTempUsers();
-	//System.out.println(arr.get(0));
+	int designation = rg.getRole(user);
+	System.out.println(designation);
 	%>
     <div style="height: 80vh; display: flex; justify-content: space-evenly">
       <div
@@ -58,8 +60,7 @@ pageEncoding="ISO-8859-1"%>
           Welcome to Dashboard
         </h5>
         <div class="d-flex flex-wrap justify-content-between p-5">
-          <div class="other areas">
-            <a onClick="{handleAddHOD()}" style="cursor: pointer"> ADD HOD </a>
+          <div class="other areas" id="dashboard-actions-area">
           </div>
         </div>
       </div>
@@ -84,7 +85,7 @@ pageEncoding="ISO-8859-1"%>
       };
       var len =`<%=arr%>`
   		var size = len.length-1
-  		if(size<10){
+  		if(size<10 && (<%=designation %>==0 || <%=designation %>==1 || <%=designation %>==2 )){
   			console.log("empty")
   		}else{
   			const notification = document.getElementById('notification-panel');
@@ -95,7 +96,16 @@ pageEncoding="ISO-8859-1"%>
   		    notification.appendChild(a);
   		}
       
-      
+      	console.log(<%=designation %>)
+      	if(<%=designation %>==0 || <%=designation %>==1 ){
+      		const dashboard = document.getElementById("dashboard-actions-area");
+      		const a = document.createElement('a');
+      		a.style.cursor = 'pointer';
+      		a.classList.add('hod_add_action');
+      		a.innerText = 'ADD HOD';
+      		a.addEventListener('click',handleAddHOD)
+      		dashboard.append(a);
+      	}
     </script>
   </body>
 </html>

@@ -236,5 +236,28 @@ public class myDetailsDaw {
 		return temp;
 		
 	}
+	
+	public int getRole(String name) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		System.out.println(name);
+		String sql = "select * from designation where uname= '"+name+"'";
+		PreparedStatement ps;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+			return Integer.parseInt(rs.getString(2));
+//			while (rs.next()) {
+//				System.out.println(rs.getString(1)+';'+ rs.getString(2));
+//				
+//			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

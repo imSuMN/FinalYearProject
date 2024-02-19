@@ -95,29 +95,33 @@ public class RegisterDao {
 	}
 	
 	
-	public void addPerm(String myuser) {
+	public void addPerm(String myuser, int role) {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String result = "Data entered successfully";
-		String sq = "select * from myusertemp where uname=?";
-		String sql = "delete from myusertemp where uname=?";
+		String sq = "select * from myusertemp where uname='"+myuser+"'";
+		String sql = "delete from myusertemp where uname='"+myuser+"'";
+		String sql2 = "insert into designation values(?,"+role+")";
 		PreparedStatement ps;
 		PreparedStatement ps1;
+		PreparedStatement ps2;
 		try {
 			ps1 = con.prepareStatement(sq);
 			ps = con.prepareStatement(sql);
-			ps.setString(1, myuser);
-			ps1.setString(1, myuser);
+			ps2 = con.prepareStatement(sql2);
+			//ps.setString(1, myuser);
+			//ps1.setString(1, myuser);
+			ps2.setString(1, myuser);
 			ResultSet rss = ps1.executeQuery();
 			rss.next();
 			System.out.println(rss.getString(1));
 			Member myusr = new Member(rss.getString(1),rss.getString(2));
 			insert(myusr);
+			ps2.executeUpdate();
 			ps.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			result = "Data not entered";
 		}
 	}
 	

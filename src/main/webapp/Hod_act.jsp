@@ -86,7 +86,7 @@
 		var n = e.target.id.substring(2);
 		var p = "1"
 		// send the request
-		params = "name=" + n + "&action=" + p;
+		params = "name=" + n + "&action=" + p+"&role="+e.target.id.substring(2,3);
 
 		xhr.send(params);
 
@@ -141,8 +141,8 @@
 			const accept = document.createElement('button')
 			const reject = document.createElement('button')
 			
-			accept.id = 'a_'+details[0];
-			reject.id = 'r_'+details[0];
+			accept.id = 'a_'+details[2]+''+details[0];
+			reject.id = 'r_'+details[2]+''+details[0];
 			accept.innerText = 'ACCEPT';
 			reject.innerText = 'REJECT';
 			accept.classList.add('accept')
