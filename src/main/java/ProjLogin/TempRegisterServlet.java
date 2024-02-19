@@ -42,10 +42,11 @@ public class TempRegisterServlet extends HttpServlet {
 
 		String uname = request.getParameter("name");
 		String action = request.getParameter("action");
+		int role = Integer.parseInt(request.getParameter("role"));
 
 		RegisterDao rDao = new RegisterDao();
 		if(action.equals("1")) {
-			rDao.addPerm(uname);
+			rDao.addPerm(uname,role);
 		}
 		else {
 			rDao.removeTemp(uname);

@@ -148,10 +148,8 @@ form p a {
 
 <body>
 	<%@page import="java.util.*,ProjMyDetails.*"%>
-	<%
-	myDetailsDaw rg = new myDetailsDaw();
+	<%myDetailsDaw rg = new myDetailsDaw();
 	ArrayList<String> arr = rg.getRoles();
-	//System.out.println(arr.get(0));
 	%>
 	<div class="container-fluid">
 		<div class="row">
