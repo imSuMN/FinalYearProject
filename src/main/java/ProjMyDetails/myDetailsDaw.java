@@ -1,7 +1,6 @@
 package ProjMyDetails;
 
 import java.io.InputStream;
-import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
