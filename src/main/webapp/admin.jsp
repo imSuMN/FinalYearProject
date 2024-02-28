@@ -85,7 +85,7 @@ pageEncoding="ISO-8859-1"%>
       };
       var len =`<%=arr%>`
   		var size = len.length-1
-  		if(size<10 && (<%=designation %>==0 || <%=designation %>==1 || <%=designation %>==2 )){
+  		if(size<10 && (<%=designation %>!=0 && <%=designation %>!=1 && <%=designation %>!=2 )){
   			console.log("empty")
   		}else{
   			const notification = document.getElementById('notification-panel');
@@ -94,6 +94,7 @@ pageEncoding="ISO-8859-1"%>
   	        	New Signup request!
   		        </a>`
   		    notification.appendChild(a);
+  		    // this is a demo comment remove it in the next commit 
   		}
       
       	console.log(<%=designation %>)
